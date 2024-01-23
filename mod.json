@@ -1,0 +1,42 @@
+{
+	"Name": "Kirby falling in Glitch pit",
+	"Description": "Plays the video of Kirby falling when you fall in the pit on glitch",
+	"Version": "1.0.0",
+	"LoadPriority": 2,
+	"Dependencies": {
+		"KIRBY_PIT_HAS_CALLBACK": "S2.ClientKillCallback"
+	},
+	"ConVars": [
+		{
+			"Name": "kirby_pit_size",
+			"DefaultValue": "500"
+		},
+		{
+			"Name": "kirby_pit_callback_remind",
+			"DefaultValue": "1"
+		}
+	],
+	"Scripts": [
+		{
+			"Path": "kirby_pit_mod_settings.nut",
+			"RunOn": "UI",
+			"UICallback": {
+				"Before": "Kirby_Pit_Mod_Settings"
+			}
+		},
+		{
+			"Path": "kirby_pit.nut",
+			"RunOn": "CLIENT && MP",
+			"ClientCallback": {
+				"After": "Kirby_Pit_MP_Init"
+			}
+		},
+		{
+			"Path": "kirby_pit_check_callback.nut",
+			"RunOn": "UI",
+			"UICallback": {
+				"After": "Kirby_Pit_UI_Init"
+			}
+		}
+	]
+}
